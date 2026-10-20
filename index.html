@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102d2b">
+<title>Clearline Pressure Washing | Instant Quote</title>
+<style>
+:root{--ink:#122d2b;--muted:#607370;--teal:#147d72;--lime:#d7f36b;--paper:#f5f7f2;--line:#dce4dc}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:22px max(22px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--line)}
+.brand{font-weight:850;letter-spacing:-.04em;font-size:1.2rem}.brand span{color:var(--teal)}.pill{font-size:.8rem;color:var(--teal);font-weight:750;background:#e5f5ed;padding:7px 12px;border-radius:30px}
+main{max-width:1120px;margin:0 auto;padding:56px 22px 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:start}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.75rem;font-weight:800;color:var(--teal)}
+h1{font-size:clamp(2.5rem,5vw,4.6rem);line-height:.99;letter-spacing:-.065em;margin:14px 0 20px;max-width:620px}
+.lede{font-size:1.08rem;color:var(--muted);max-width:530px}.features{display:flex;gap:18px;flex-wrap:wrap;margin-top:30px;color:#38514d;font-size:.9rem;font-weight:650}.features span:before{content:"✓";display:inline-grid;place-items:center;background:var(--lime);width:21px;height:21px;border-radius:50%;margin-right:7px;color:var(--ink)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 18px 50px #153e3210}
+.panel h2{font-size:1.35rem;letter-spacing:-.035em;margin:0 0 5px}.sub{color:var(--muted);font-size:.9rem;margin:0 0 23px}
+label{display:block;font-size:.87rem;font-weight:750;margin:0 0 7px}input,select,textarea{width:100%;font:inherit;color:var(--ink);background:#fbfcf9;border:1px solid #cbd8ce;border-radius:10px;padding:12px 13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #147d721c}.field{margin-bottom:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.services{display:grid;gap:10px;margin:12px 0 20px}.service{border:1px solid var(--line);border-radius:12px;padding:13px;display:grid;grid-template-columns:20px 1fr auto;gap:10px;align-items:start;cursor:pointer}.service:has(input:checked){border-color:var(--teal);background:#f1faf5}.service input{width:17px;height:17px;margin-top:3px;accent-color:var(--teal)}.service strong{display:block;font-size:.94rem}.service small{color:var(--muted)}.rate{font-size:.84rem;font-weight:800;white-space:nowrap}
+.measure{display:grid;grid-template-columns:1fr 1fr;gap:12px}.measure .field{margin-bottom:12px}.hint{font-size:.78rem;color:var(--muted);margin-top:5px}
+.quote{background:var(--ink);color:white;border-radius:16px;padding:20px;margin:20px 0}.quote-top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#c7d8d2;font-size:.9rem}.price{font-size:2.8rem;letter-spacing:-.06em;font-weight:850;line-height:1.15;margin:9px 0 4px}.quote-note{font-size:.8rem;color:#c7d8d2}.quote-lines{border-top:1px solid #ffffff25;margin-top:15px;padding-top:10px;font-size:.84rem;color:#e0ebe5}.line{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+button{width:100%;border:0;border-radius:11px;padding:15px 18px;font:inherit;font-weight:850;cursor:pointer;background:var(--lime);color:var(--ink);transition:transform .15s,opacity .15s}button:hover{transform:translateY(-1px)}button:disabled{opacity:.6;cursor:wait}
+.status{font-size:.88rem;margin-top:12px;display:none;padding:12px;border-radius:10px}.status.ok{display:block;background:#e8f7ec;color:#175b39}.status.err{display:block;background:#fff0e9;color:#8d3116}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:.8rem}
+@media(max-width:800px){main{grid-template-columns:1fr;gap:28px;padding-top:36px}.intro{max-width:650px}.panel{padding:22px}h1{font-size:3.2rem}}
+@media(max-width:430px){.grid2,.measure{grid-template-columns:1fr}.pill{font-size:.72rem}.price{font-size:2.4rem}}
+</style>
+</head>
+<body>
+<header><div class="brand">CLEARLINE<span>.</span> WASHING</div><div class="pill">INSTANT ESTIMATES</div></header>
+<main>
+<section class="intro">
+<div class="eyebrow">A cleaner property starts here</div>
+<h1>Get your pressure washing quote in minutes.</h1>
+<p class="lede">Tell us what you’d like cleaned and the approximate size. We’ll calculate an instant estimate, with no waiting around for a callback.</p>
+<div class="features"><span>Upfront pricing</span><span>Fast and simple</span><span>No-obligation estimate</span></div>
+</section>
+<section class="panel">
+<h2>Build your quote</h2>
+<p class="sub">Choose each service you need and enter its measurements.</p>
+<form id="quoteForm">
+<div class="field"><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required placeholder="Full name"></div>
+<div class="grid2">
+<div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+<div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567"></div>
+</div>
+<div class="field"><label for="address">Property address *</label><input id="address" name="address" autocomplete="street-address" required placeholder="Street, city, ZIP"></div>
+<label>What needs cleaning? *</label>
+<div class="services">
+<label class="service"><input type="checkbox" name="service" value="house"><span><strong>House washing</strong><small>Exterior siding and walls</small></span><span class="rate">$0.15 / sq ft</span></label>
+<label class="service"><input type="checkbox" name="service" value="driveway"><span><strong>Driveway</strong><small>Concrete or paved surface</small></span><span class="rate">$0.12 / sq ft</span></label>
+<label class="service"><input type="checkbox" name="service" value="deck"><span><strong>Deck</strong><small>Outdoor deck surface</small></span><span class="rate">$0.30 / sq ft</span></label>
+<label class="service"><input type="checkbox" name="service" value="fence"><span><strong>Fence washing</strong><small>Measure total length</small></span><span class="rate">$1.00 / linear ft</span></label>
+</div>
+<div id="measurements" class="measure"></div>
+<div class="field"><label for="notes">Anything else we should know? (optional)</label><textarea id="notes" name="notes" rows="2" placeholder="Surface type, access details, or special requests"></textarea></div>
+<div class="quote" aria-live="polite">
+<div class="quote-top"><span>Your estimated price</span><span id="serviceCount">0 services</span></div>
+<div class="price" id="total">$150.00</div>
+<div class="quote-note" id="minimumNote">Minimum job price applies when calculated total is under $150.</div>
+<div class="quote-lines" id="breakdown"><div class="line"><span>Select services to see your estimate</span><span>—</span></div></div>
+</div>
+<button id="submitBtn" type="submit">Email my quote request →</button>
+<div id="status" class="status" role="status"></div>
+<p class="hint">This is an estimate based on the measurements you provide. Final pricing may be confirmed after reviewing the property.</p>
+</form>
+</section>
+</main>
+<footer>Clearline Pressure Washing · Clean results, clear pricing.</footer>
+<script>
+const rates={house:{label:"House washing",rate:.15,unit:"sq ft"},driveway:{label:"Driveway",rate:.12,unit:"sq ft"},deck:{label:"Deck",rate:.30,unit:"sq ft"},fence:{label:"Fence washing",rate:1,unit:"linear ft"}};
+const fmt=n=>n.toLocaleString("en-US",{style:"currency",currency:"USD"});
+const checks=[...document.querySelectorAll('input[name="service"]')];
+const measurements=document.getElementById("measurements");
+function selected(){return checks.filter(c=>c.checked).map(c=>c.value)}
+function renderMeasurements(){
+ measurements.innerHTML="";
+ selected().forEach(key=>{
+  const s=rates[key],wrap=document.createElement("div");wrap.className="field";
+  const label=document.createElement("label");label.htmlFor="measure-"+key;label.textContent=s.label+" ("+s.unit+") *";
+  const input=document.createElement("input");input.id="measure-"+key;input.name="measure-"+key;input.type="number";input.min="1";input.step="1";input.required=true;input.placeholder=key==="fence"?"e.g. 120":"e.g. 850";input.addEventListener("input",update);
+  const hint=document.createElement("div");hint.className="hint";hint.textContent="Approximate "+s.unit;
+  wrap.append(label,input,hint);measurements.append(wrap);
+ });update();
+}
+function calculate(){
+ const lines=selected().map(key=>{const amount=Number(document.getElementById("measure-"+key)?.value||0);return {key,label:rates[key].label,amount,unit:rates[key].unit,rate:rates[key].rate,subtotal:amount*rates[key].rate}});
+ const raw=lines.reduce((a,x)=>a+x.subtotal,0);return {lines,raw,total:Math.max(150,raw),minimumApplied:raw<150};
+}
+function update(){
+ const q=calculate();document.getElementById("total").textContent=fmt(q.total);
+ document.getElementById("serviceCount").textContent=q.lines.length+" service"+(q.lines.length===1?"":"s");
+ document.getElementById("minimumNote").textContent=q.minimumApplied?"$150 minimum job price applied.":"Calculated service total; minimum job price is $150.";
+ document.getElementById("breakdown").innerHTML=q.lines.length?q.lines.map(x=>`<div class="line"><span>${x.label} · ${x.amount.toLocaleString()} ${x.unit} × ${fmt(x.rate)}</span><strong>${fmt(x.subtotal)}</strong></div>`).join("")+(q.minimumApplied?`<div class="line"><span>Minimum job adjustment</span><strong>${fmt(150-q.raw)}</strong></div>`:""):'<div class="line"><span>Select services to see your estimate</span><span>—</span></div>';
+}
+checks.forEach(c=>c.addEventListener("change",renderMeasurements));
+const form=document.getElementById("quoteForm"),status=document.getElementById("status"),btn=document.getElementById("submitBtn");
+form.addEventListener("submit",async e=>{
+ e.preventDefault();status.className="status";status.style.display="none";
+ if(!selected().length){status.textContent="Please select at least one service.";status.className="status err";return}
+ const q=calculate();if(q.lines.some(x=>!Number.isFinite(x.amount)||x.amount<=0)){status.textContent="Please enter a measurement greater than zero for every selected service.";status.className="status err";return}
+ const data=Object.fromEntries(new FormData(form).entries());data.services=q.lines;data.rawTotal=q.raw;data.quoteTotal=q.total;data.minimumApplied=q.minimumApplied;
+ btn.disabled=true;btn.textContent="Sending quote request…";
+ try{
+  const response=await fetch("/.netlify/functions/send-quote",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+  const result=await response.json();if(!response.ok)throw new Error(result.error||"Could not send your request.");
+  status.textContent="Your quote request has been sent! We’ll follow up using the contact details you provided.";status.className="status ok";form.reset();renderMeasurements();
+ }catch(err){status.textContent=err.message+" Please try again or contact the company directly.";status.className="status err"}
+ finally{btn.disabled=false;btn.textContent="Email my quote request →"}
+});
+renderMeasurements();
+</script>
+</body>
+</html>
