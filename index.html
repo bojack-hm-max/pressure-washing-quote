@@ -103,10 +103,43 @@ form.addEventListener("submit",async e=>{
  const data=Object.fromEntries(new FormData(form).entries());data.services=q.lines;data.rawTotal=q.raw;data.quoteTotal=q.total;data.minimumApplied=q.minimumApplied;
  btn.disabled=true;btn.textContent="Sending quote request…";
  try{
-  const response=await fetch("/.netlify/functions/send-quote",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  const result=await response.json();if(!response.ok)throw new Error(result.error||"Could not send your request.");
-  status.textContent="Your quote request has been sent! We’ll follow up using the contact details you provided.";status.className="status ok";form.reset();renderMeasurements();
- }catch(err){status.textContent=err.message+" Please try again or contact the company directly.";status.className="status err"}
+  
+const response = await fetch("/.netlify/functions/send-quote", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data)
+});
+
+const responseText = await response.text();
+let result = {};
+
+try {
+  result = responseText ? JSON.parse(responseText) : {};
+} catch {
+  throw new Error("The server returned an unexpected response. Please try again.");
+}
+
+if (!response.ok || result.ok !== true) {
+  throw new Error(result.error || "Could not send your request.");
+}
+
+status.textContent =
+  "Your quote request has been sent successfully! We'll follow up using the contact details you provided.";
+status.className = "status ok";
+status.style.display = "block";
+
+form.reset();
+renderMeasurements();
+status.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+ } catch (err) {
+  status.textContent =
+    (err.message || "Something went wrong.") +
+    " Please try again or contact the company directly.";
+  status.className = "status err";
+  status.style.display = "block";
+  status.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
  finally{btn.disabled=false;btn.textContent="Email my quote request →"}
 });
 renderMeasurements();
